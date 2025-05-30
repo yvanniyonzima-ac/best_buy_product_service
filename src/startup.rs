@@ -43,16 +43,6 @@ pub fn run(mut settings: Settings) -> Result<Server, std::io::Error> {
         .route("/", web::post().to(add_product))
         .route("/", web::put().to(update_product))
         .route("/{product_id}", web::delete().to(delete_product))
-        .route("/ai/health", web::get().to(ai_health))
-        .route("/ai/health", web::head().to(ai_health))
-        .route(
-            "/ai/generate/description",
-            web::post().to(ai_generate_description),
-        )
-        .route(
-            "/ai/generate/image",
-            web::post().to(ai_generate_image),
-        )
     })
     .listen(listener)?
     .run();
